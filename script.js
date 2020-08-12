@@ -5,15 +5,18 @@ console.log('test');
 var city_list = [];
 let city
 let Key = 'bfb4dd173c09127c6a080ab08eadf4a2';
+  
+let searchData = $(".search-data")
 
 //lets establish the functions we will need
 
 function getWeather() {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey + "&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + Key + "&units=imperial";
     $.ajax({
-        url: queryURL
+        url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         $(".search-data").html("");
         var Div1 = $("<div class='cityWeather'>");
         Div1.html("<h2>Current Weather</h2><br>")
@@ -56,6 +59,7 @@ $(document).ready(function () {
         console.log('click');
         city = $("#search-term").val()
         getWeather();
+        
         // display5day()
     })
     //render buttons
